@@ -7,5 +7,5 @@ def openWindow(qr):
     window.geometry("200x200")
     label = tk.Label(window, text=qr.data)
     label.pack()
-    window.mainloop();
+    window.mainloop()
     return
