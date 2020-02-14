@@ -6,7 +6,6 @@ import cv2
 def decode(im):
   # Find barcodes and QR codes
   decodedObjects = pyzbar.decode(im)
-
   # Print results
   for obj in decodedObjects:
     print('Type : ', obj.type)
@@ -14,10 +13,8 @@ def decode(im):
 
   return decodedObjects
 
-
 # Display barcode and QR code location
 def display(im, decodedObjects):
-
   # Loop over all decoded objects
   for decodedObject in decodedObjects:
     points = decodedObject.polygon
