@@ -1,4 +1,4 @@
-import qr_reader as reader
+import pyzbar.pyzbar as pyzbar
 import cv2 as cv
 import data_display as display
 
@@ -9,7 +9,7 @@ def show_webcam(mirror=False):
         if mirror:
             img = cv.flip(img, 1)
         cv.imshow('my webcam', img)
-        for obj in reader.decode(img):
+        for obj in pyzbar.decode(img):
           display.openWindow(obj)
         if cv.waitKey(1) == 27:
             break  # esc to quit

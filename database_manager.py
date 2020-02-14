@@ -14,10 +14,10 @@ def loadObjects():
         boletos.append(boleto.boleto(line))
     return boletos
 
-def savefile(filename):
+def savefile(filename, boletos):
     file=open(filename,'w')
     try:
-        for obj in loadObjects():
+        for obj in boletos:
             file.write(obj.toString())
     finally:
         file.close()

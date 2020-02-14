@@ -1,5 +1,8 @@
 class boleto:
 
+    def replace_object(self, new_object):
+        self.__dict__ = new_object.__dict__.copy()
+
     def toString(self):
         asis=''
         for obj in self.asistencia:
@@ -17,6 +20,6 @@ class boleto:
         self.correo=atributos[2]
         self.institucion=atributos[3]
         self.transporte= (atributos[4]=='True')
-        for i in range(5,9):
+        for i in range(5,10):
             self.asistencia.append(atributos[i]=='True')
-        self.numero=int(atributos[9])
+        self.numero=int(atributos[10])
