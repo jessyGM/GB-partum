@@ -4,17 +4,19 @@ import numpy as np
 import database_manager as db
 from tkinter import messagebox
 
-def openWindow(qr):
+def openWindow(qr,database):
     found=False
-    cod=int(qr.data)
-    print(cod)
-    for obj in db.loadObjects():
-        if cod==int(obj.codigo):
+    cod=str(qr.data)[:-1]
+    cod=cod[2:]
+    for obj in database.boletosDB:
+        if cod==obj.codigo:
             found=True
             codeFound(obj)
             break
     if found==False:
+        window=tk.Tk()
         messagebox.showinfo('Error','No se encontro el boleto')
+        window.destroy()
 
 def codeFound(obj):
     window=tk.Tk()
@@ -29,7 +31,7 @@ def codeFound(obj):
     tk.Label(window, text=obj.nombre).grid(row=0, column=1)
     tk.Label(window, text=obj.correo).grid(row=1, column=1)
     tk.Label(window, text=obj.numero).grid(row=2, column=1)
-    tk.Label(window, text=obj.institucion).grid(row=3, column=1)
+    #tk.Label(window, text=obj.institucion).grid(row=3, column=1)
 
     asiste=tk.StringVar(window)
     asiste.set('seleccione uno')
@@ -49,10 +51,4 @@ def registrar(window,drop,ref):
     else:
         ref.asistencia[x]=True
         messagebox.showinfo('Exito','Asistente registrado con Exito')
-        boletos=db.loadObjects()
-        for boleto in boletos:
-            if boleto.codigo==ref.codigo:
-                boleto.replace_object(ref)
-                break
-        db.savefile('data.txt',boletos)
         window.destroy()
