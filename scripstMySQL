@@ -1,0 +1,36 @@
+////////////////////////
+COMENTARIO
+Esto es para una base local, para probarlo en tu propia compu, ingresa estos comandos (en la ventana de SQL) luego de instalar MySQL
+/////////////////////////////////////
+CREATE DATABASE boletos;
+
+USE boletos;
+
+CREATE TABLE REGISTRO(
+			noBoleto INTEGER (5) NOT NULL,
+			nombre VARCHAR (50) NOT NULL,
+			correo VARCHAR (50) NOT NULL,
+			celular VARCHAR (20) NOT NULL,
+			fecha DATE NOT NULL,
+			hora VARCHAR (10) NOT NULL, 
+			instituto VARCHAR (50), 
+			codigo VARCHAR (20) NOT NULL,
+			PRIMARY KEY (codigo));
+
+////////////////////////
+COMENTARIO
+REGISTRO serán los boletos como se vendieron, sin registrar su asistencia
+////////////////////////////////
+
+CREATE TABLE ASISTENCIA(
+			nombre VARCHAR (50) NOT NULL,
+			instituto VARCHAR (50), 
+			mg1 BOOLEAN,
+			mg2 BOOLEAN,
+			mg3 BOOLEAN,
+			mg4 BOOLEAN,
+			w BOOLEAN);
+////////////////////////
+COMENTARIO
+ASISTENCIA será el registro para el día de las conferencias tal cual
+////////////////////////////////
